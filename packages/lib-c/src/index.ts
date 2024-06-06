@@ -1,3 +1,3 @@
 export function libC(val: number) {
-    return val * 2;
+    return val * 3;
 }
