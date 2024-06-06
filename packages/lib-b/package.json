@@ -1,0 +1,17 @@
+{
+  "name": "@example/lib-b",
+  "type": "module",
+  "module": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@example/lib-c": "workspace:*"
+  }
+}

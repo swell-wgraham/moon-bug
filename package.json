@@ -1,0 +1,13 @@
+{
+    "name": "moon-bug-repo",
+    "devDependencies": {
+        "@biomejs/biome": "1.8.0",
+        "@swc/cli": "^0.3.12",
+        "@swc/core": "^1.5.25"
+    },
+    "trustedDependencies": ["@biomejs/biome", "@swc/core", "esbuild"],
+    "workspaces": ["apps/*", "packages/*"],
+    "dependencies": {
+       
+    }
+}

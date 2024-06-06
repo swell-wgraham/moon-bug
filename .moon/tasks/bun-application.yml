@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://moonrepo.dev/schemas/tasks.json
+$schema: 'https://moonrepo.dev/schemas/tasks.json'
+
+fileGroups:
+  sources:
+    - 'src/**/*'
+    - 'types/**/*'
+  tests:
+    - 'tests/**/*'
+    - '**/__tests__/**/*'
+  assets:
+    - 'assets/**/*'
+    - 'images/**/*'
+    - 'static/**/*'
+    - '**/*.{scss,css}'
+
+tasks:
+  build:
+    command: 'bun'
+    args:
+      - 'build'
+      - './src/index.ts'
+      - '--outdir'
+      - './dist'
+    outputs: 
+      - 'dist/'
+  dev:
+    command: 'bun'
+    args:
+      - '--watch'
+      - './src/index.ts'
+    env:
+      NODE_ENV: 'development'
+      
+  package:
+    command: 'docker'
+    args:
+      - 'build'
+      - '--build-arg'
+      - 'APP_ID=$project'
+      - '-f'
+      - '$projectRoot/Dockerfile'
+      - '-t'
+      - '$project:latest'
+      - '.'
+    options:
+      runFromWorkspaceRoot: true

@@ -1,0 +1,7 @@
+id: 'app-a'
+type: 'application'
+platform: 'bun'
+language: 'typescript'
+
+dependsOn:
+  - lib-a

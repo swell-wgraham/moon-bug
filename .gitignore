@@ -1,0 +1,7 @@
+.moon/cache/
+.moon/docker/
+.DS_Store
+node_modules/
+apps/**/dist/
+packages/**/dist/
+cdk.out/

@@ -1,0 +1,8 @@
+id: 'lib-b'
+type: 'library'
+platform: 'bun'
+language: 'typescript'
+stack: 'backend'
+
+dependsOn:
+  - lib-c

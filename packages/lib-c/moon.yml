@@ -1,0 +1,5 @@
+id: 'lib-c'
+type: 'library'
+platform: 'bun'
+language: 'typescript'
+stack: 'backend'

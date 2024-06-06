@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://moonrepo.dev/schemas/tasks.json
+$schema: 'https://moonrepo.dev/schemas/tasks.json'
+
+fileGroups:
+  sources:
+    - 'src/**/*'
+    - 'types/**/*'
+  tests:
+    - 'tests/**/*'
+    - '**/__tests__/**/*'
+  assets:
+    - 'assets/**/*'
+    - 'images/**/*'
+    - 'static/**/*'
+    - '**/*.{scss,css}'
+
+tasks:
+  lint-typecheck:
+    command: 'tsc'
+    args: '--noEmit'
+    options:
+      internal: true
+
+  lint:
+    command: 'bunx'
+    args: '@biomejs/biome check --write **/*.ts'
+    deps:
+      - lint-typecheck
+
+  test:
+    command: 'bun'
+    args: 'test --env-file $workspaceRoot/.env.test' 
+    env:
+      NODE_ENV: 'test'

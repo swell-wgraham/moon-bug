@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://moonrepo.dev/schemas/workspace.json
+$schema: 'https://moonrepo.dev/schemas/workspace.json'
+versionConstraint: '>=1.0.0'
+
+projects:
+  - 'apps/**/moon.yml'
+  - 'packages/**/moon.yml'
+  - 'cdk/**/moon.yml'
+
+constraints:
+  enforceProjectTypeRelationships: true
+
+generator:
+  templates:
+    - './templates'
+
+codeowners:
+  globalPaths:
+    '*': ['@tech-leads']
+    'cdk/': ['@infra']
+    '/.github/': ['@infra']
+  syncOnRun: true
+
+vcs:
+  manager: 'git'
+  defaultBranch: 'main'
+  provider: 'github'
+  syncHooks: true
+  hooks:
+    pre-commit:
+      - 'moon run :lint --affected --status=staged'
+    commit-msg:
+      - 'bun run scripts/precommit-hook.ts -- $@'
